@@ -24,13 +24,13 @@ RUN curl ifconfig.co
 
 
 # The application's jar file
-ARG JAR_FILE=spring-auth0-demo-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=/target/spring-auth0-demo-0.0.1-SNAPSHOT.jar
 
 # The application's property file
 ARG APP_PROPERTIES=/config/prod/application.properties
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} /app/spring-auth0-demo-0.0.1-SNAPSHOT.jar
+ADD ${JAR_FILE} spring-auth0-demo-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
 ADD ${APP_PROPERTIES} /app/config/application.properties
