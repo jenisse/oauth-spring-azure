@@ -24,7 +24,7 @@ RUN curl ifconfig.co
 
 
 # The application's jar file
-ARG JAR_FILE=/target/spring-auth0-demo-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=spring-auth0-demo-0.0.1-SNAPSHOT.jar
 
 # The application's property file
 ARG APP_PROPERTIES=/config/prod/application.properties
