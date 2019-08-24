@@ -16,6 +16,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<base.dir>C:/Users/evereau/Documents/spring auth demo/spring-auth0-demo</base.dir>
+		<properties.location>${base.dir}/config/dev</properties.location>
 	</properties>
 
 	<dependencies>
@@ -88,16 +90,44 @@
 		</dependency>
 	</dependencies>
 
-
+<profiles>
+	<profile>
+		<id>container</id>
+		<properties>
+			<properties.location>app/config</properties.location>
+		</properties>
+	</profile>
+</profiles>
 
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.3</version>
+				<configuration>
+					<repository>rgdevcontainers.azurecr.io/auth</repository>
+					<tag>latest</tag>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+				</configuration>
+
+			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 
 </project>
