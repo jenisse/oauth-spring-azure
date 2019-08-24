@@ -3,6 +3,10 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+
+variables:
+  dockerId: RGDEVContainers
+
 trigger:
 - master
 
@@ -10,10 +14,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: mvn clean package
+- script: mvn clean package -P container
   displayName: 'Packaging jar'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+#- script:  docker login -u $(dockerId) -p $(pswd) rgdevcontainers.azurecr.io 
+#  displayName: 'Login to Docker Azure Container Registry'
+#- script: 
+#- script: |
+#    echo Add other tasks to build, test, and deploy your project.
+#    echo See https://aka.ms/yaml
+#  displayName: 'Run a multi-line script'
