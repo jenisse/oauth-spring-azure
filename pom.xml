@@ -94,7 +94,7 @@
 	<profile>
 		<id>container</id>
 		<properties>
-			<properties.location>app/config</properties.location>
+			<properties.location>/app/config</properties.location>
 		</properties>
 	</profile>
 </profiles>
