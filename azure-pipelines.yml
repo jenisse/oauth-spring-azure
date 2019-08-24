@@ -14,11 +14,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: DownloadSecureFile@1
+  name: mvnsettings
+  displayName: 'Download Maven settings'
+  inputs:
+    secureFile: 'settings.xml'
 - script: mvn clean package -P container
   displayName: 'Packaging jar'
 #- script:  docker login -u $(dockerId) -p $(pswdreg) rgdevcontainers.azurecr.io 
 #  displayName: 'Login to Docker Azure Container Registry'
-#- script: 
+- script: mvn  dockerfile:build dockerfile:push
+  displayName: 'Build and Push docker image'
 #- script: |
 #    echo Add other tasks to build, test, and deploy your project.
 #    echo See https://aka.ms/yaml
