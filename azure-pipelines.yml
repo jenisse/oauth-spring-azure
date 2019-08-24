@@ -20,7 +20,7 @@ steps:
   inputs:
     secureFile: 'settings.xml'
 - script: mvn clean package -P container
-  displayName: 'Packaging jar'
+  displayName: 'Packaging jar '
 #- script:  docker login -u $(dockerId) -p $(pswdreg) rgdevcontainers.azurecr.io 
 #  displayName: 'Login to Docker Azure Container Registry'
 - script: mvn  dockerfile:build dockerfile:push
