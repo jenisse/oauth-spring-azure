@@ -29,8 +29,8 @@ ARG JAR_FILE=/target/spring-auth0-demo-0.0.1-SNAPSHOT.jar
 # The application's property file
 ARG APP_PROPERTIES=/config/prod/application.properties
 
-# The application's property file
-ARG APP_KEYSTORE=/config/prod/authgkn.p12
+# The application's property kk
+ARG APP_KEYSTORE=/config/prod/keystore.p12
 
 # Add the application's jar to the container
 ADD ${JAR_FILE} spring-auth0-demo-0.0.1-SNAPSHOT.jar
@@ -39,7 +39,7 @@ ADD ${JAR_FILE} spring-auth0-demo-0.0.1-SNAPSHOT.jar
 ADD ${APP_PROPERTIES} /app/config/application.properties
 
 # Add the application's jar to the container
-ADD ${APP_KEYSTORE} /app/config/authgkn.p12
+ADD ${APP_KEYSTORE} /app/config/keystore.p12
 
 # Run the jar file 
 ENTRYPOINT ["java","-XX:+HeapDumpOnOutOfMemoryError","-XX:HeapDumpPath=/shared/heapdump/heapdump.bin","-Dcom.sun.management.jmxremote.rmi.port=9090","-Dcom.sun.management.jmxremote=true","-Dcom.sun.management.jmxremote.port=9090","-Dcom.sun.management.jmxremote.ssl=false","-Dcom.sun.management.jmxremote.authenticate=false","-Dcom.sun.management.jmxremote.local.only=false","-Dcom.sun.management.jmxremote.ssl=false","-Djava.rmi.server.hostname=tampatapi.westus2.azurecontainer.io","-Djasypt.encryptor.password=tere1234","-Djasypt.encryptor.algorithm=PBEWithMD5AndTripleDES","-jar","spring-auth0-demo-0.0.1-SNAPSHOT.jar"]
